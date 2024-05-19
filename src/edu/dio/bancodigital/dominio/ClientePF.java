@@ -1,41 +1,27 @@
 package edu.dio.bancodigital.dominio;
 
-import java.time.LocalDate;
-import java.util.Scanner;
 
 public class ClientePF extends Cliente{
 
     private String nome, sobrenome, numero_telefone;
-    private final String cpf;
-    private LocalDate data_nascimento;
-
+    private  String cpf;
 
     public ClientePF() {
         super();
     }
 
-    public ClientePF(String email, String senha, String nome, String sobrenome, String numero_telefone, String cpf, LocalDate data_nascimento) {
+    public ClientePF(String email, String senha, String nome, String sobrenome, String numero_telefone, String cpf) {
         super(email, senha);
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.numero_telefone = numero_telefone;
         this.cpf = cpf;
-        this.data_nascimento = data_nascimento;
+
     }
 
 
-    @Override
-    public void cadastrarCliente() {
-
-        Scanner entrada = new Scanner(System.in);
-        System.out.println("Digite seu nome: ");
-        setNome(entrada.nextLine());
-        System.out.println("Digite seu sobrenome: ");
-        setSobrenome(entrada.nextLine());
-        String
-
-
-
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getNome() {
@@ -66,11 +52,12 @@ public class ClientePF extends Cliente{
         return cpf;
     }
 
-    public LocalDate getData_nascimento() {
-        return data_nascimento;
-    }
 
-    public void setData_nascimento(LocalDate data_nascimento) {
-        this.data_nascimento = data_nascimento;
+    @Override
+    public String toString() {
+
+        return String.format("%s%s %s%n%s: %s%n%s: %s%n%s: %s%n", super.toString(), "Nome", getNome(), "Sobrenome", getSobrenome(), "CPF", getCpf(),
+                "Contato", getNumero_telefone());
+
     }
 }

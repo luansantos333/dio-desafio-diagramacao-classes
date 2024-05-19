@@ -16,33 +16,17 @@ public abstract class Cliente {
 
 
     public Cliente(String email, String senha) {
-        super();
+        this();
         this.email = email;
         this.senha = senha;
     }
 
-    public abstract void cadastrarCliente();
 
-    public void signUp () {
-
-        Scanner input = new Scanner(System.in);
-        System.out.println("Digite seu endereço de e-mail: ");
-        setEmail(input.nextLine());
-        System.out.println("Digite sua senha: ");
-        String senha = input.nextLine();
-        System.out.println("Digite sua senha novamente para confirmação: ");
-        String confirmaSenha = input.nextLine();
-        if (confirmaSenha.equals(senha)) setSenha(senha); else  {
-            System.out.println("A senha digitada não coincide com a senha anterior");
-            signUp();
-        }
-
-
-
-
+    @Override
+    public String toString() {
+        return String.format("%s%n---------------%n%s: %d%n%s: %s%n%s: %s%n", "CADASTRO", "ID", getId(), "E-mail", getEmail(), "Senha",
+                getSenha());
     }
-
-
 
     public long getId() {
         return id;
