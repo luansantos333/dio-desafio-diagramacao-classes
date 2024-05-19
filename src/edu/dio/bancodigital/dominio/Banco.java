@@ -43,7 +43,13 @@ public class Banco {
 
         if (getContas().isPresent()) {
 
-            for (Conta conta : getContas().get()) System.out.println(conta);
+            for (Conta conta : getContas().get()) {
+                System.out.println("======= DADOS CONTAS =======");
+                conta.imprimirExtrato();
+                System.out.println("===== DADOS CADASTRO =======");
+                conta.imprimirDadosCliente();
+
+            }
 
         } else {
 
