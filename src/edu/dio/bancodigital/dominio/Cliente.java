@@ -11,7 +11,7 @@ public abstract class Cliente {
 
 
     public Cliente() {
-        this.id = ThreadLocalRandom.current().nextLong();
+        this.id = ThreadLocalRandom.current().nextLong(0, 1_000_000);
     }
 
 

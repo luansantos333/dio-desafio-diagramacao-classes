@@ -10,7 +10,7 @@ public class ClientePF extends Cliente{
         super();
     }
 
-    public ClientePF(String email, String senha, String nome, String sobrenome, String numero_telefone, String cpf) {
+    public ClientePF(String cpf, String nome, String sobrenome, String numero_telefone, String email, String senha) {
         super(email, senha);
         this.nome = nome;
         this.sobrenome = sobrenome;

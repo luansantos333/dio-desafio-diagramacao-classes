@@ -2,15 +2,16 @@ package edu.dio.bancodigital.dominio;
 
 import edu.dio.bancodigital.exception.SetVazioException;
 
-import java.util.Optional;
-import java.util.SortedSet;
+import java.util.List;
+
+
 
 public class Banco {
 
 
     private int id_banco;
     private String nome;
-    private Optional<SortedSet<Conta>> contas;
+    private List<Conta> contas;
 
 
     public int getId_banco() {
@@ -29,21 +30,20 @@ public class Banco {
         this.nome = nome;
     }
 
-
-    public Optional<SortedSet<Conta>> getContas() {
+    public List<Conta> getContas() {
         return contas;
     }
 
-    public void setContas(Optional<SortedSet<Conta>> contas) {
+    public void setContas(List<Conta> contas) {
         this.contas = contas;
     }
 
-    public void imprimirTodasContas () {
+    public void imprimirTodasContas () throws SetVazioException {
 
 
-        if (getContas().isPresent()) {
+        if (!getContas().isEmpty()) {
 
-            for (Conta conta : getContas().get()) {
+            for (Conta conta : getContas()) {
                 System.out.println("======= DADOS CONTAS =======");
                 conta.imprimirExtrato();
                 System.out.println("===== DADOS CADASTRO =======");
@@ -53,13 +53,7 @@ public class Banco {
 
         } else {
 
-
-            try {
-                getContas().orElseThrow(() -> new SetVazioException("Nenhuma conta cadastrada"));
-            } catch (SetVazioException e) {
-                throw new RuntimeException(e);
-            }
-
+            throw new SetVazioException("Não há contas cadastradas!");
 
         }
 
